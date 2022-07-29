@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Nixie+One&display=swap");
+.numCounter {
+  display: inline-block;
+  height: 90px;
+  line-height: 90px;
+  text-shadow: 0 0 2px #f8f8f8;
+  font-weight: bold;
+  white-space: normal;
+  font-size: 60px;
+}
+.numCounter > div {
+  display: inline-block;
+  vertical-align: top;
+  height: 100%;
+}
+.numCounter > div > b {
+  display: inline-block;
+  width: 64.2857142857px;
+  height: 100%;
+  margin: 0 0.1em;
+  border-radius: 8px;
+  text-align: center;
+  text-shadow: 2px 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1) inset, -2px -2px 2px rgba(255, 255, 255, 0.12) inset;
+  overflow: hidden;
+}
+.numCounter > div > b::before {
+  content: " 0 1 2 3 4 5 6 7 8 9 ";
+  display: block;
+  word-break: break-all;
+  word-break: break-word;
+  transition: 0.5s cubic-bezier(0.75, 0.15, 0.6, 1.15), text-shadow 150ms;
+}
+.numCounter > div > b.blur {
+  opacity: 0.8;
+  text-shadow: 2px 1px 3px rgba(0, 0, 0, 0.2), 0 0.1em 2px rgba(248, 248, 248, 0.6), 0 0.3em 3px rgba(248, 248, 248, 0.3), 0 -0.1em 2px rgba(248, 248, 248, 0.6), 0 -0.3em 3px rgba(248, 248, 248, 0.3);
+}
+.numCounter > div > b[data-value="1"]::before {
+  margin-top: -90px;
+}
+.numCounter > div > b[data-value="2"]::before {
+  margin-top: -180px;
+}
+.numCounter > div > b[data-value="3"]::before {
+  margin-top: -270px;
+}
+.numCounter > div > b[data-value="4"]::before {
+  margin-top: -360px;
+}
+.numCounter > div > b[data-value="5"]::before {
+  margin-top: -450px;
+}
+.numCounter > div > b[data-value="6"]::before {
+  margin-top: -540px;
+}
+.numCounter > div > b[data-value="7"]::before {
+  margin-top: -630px;
+}
+.numCounter > div > b[data-value="8"]::before {
+  margin-top: -720px;
+}
+.numCounter > div > b[data-value="9"]::before {
+  margin-top: -810px;
+}
+.numCounter > div:nth-last-child(3n):not(:first-child)::before {
+  content: "";
+  display: inline;
+  font-size: 1em;
+  opacity: 0.8;
+  color: #f8f8f8;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  font-family: "Nixie One", cursive;
+  perspective: 1000px;
+}
+
+.numCounter {
+  overflow: hidden;
+  padding: 0.4em;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.75);
+  border-left: 1px solid rgba(255, 255, 255, 0.75);
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  background: linear-gradient(330deg, #0e1a32, #0f1b31);
+  box-shadow: -15px -15px 200px #102142, 15px 15px 200px #0e1a31;
+}
+.numCounter b {
+  background: #000;
+  background: linear-gradient(-30deg, #132850, #0e1625);
+  color: #f8f8f8;
+}

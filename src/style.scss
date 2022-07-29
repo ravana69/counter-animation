@@ -1,0 +1,109 @@
+$digitHeight: 90px;
+$speed: 0.5s;
+$baseColor: #0d1a33;
+$textColor: #f8f8f8;
+
+.numCounter {
+	display: inline-block;
+	height: $digitHeight;
+	line-height: $digitHeight;
+	text-shadow: 0 0 2px #f8f8f8;
+	font-weight: bold;
+	white-space: normal;
+	font-size: $digitHeight/1.5;
+	> div {
+		display: inline-block;
+		vertical-align: top;
+		height: 100%;
+
+		> b {
+			display: inline-block;
+			width: $digitHeight/1.4;
+			height: 100%;
+			margin: 0 0.1em;
+			border-radius: 8px;
+			text-align: center;
+			text-shadow: 2px 1px 3px rgba(black, 0.2);
+			box-shadow: 2px 2px 3px rgba(black, 0.1) inset,
+				-2px -2px 2px rgba(white, 0.12) inset;
+			overflow: hidden;
+
+			&::before {
+				content: " 0 1 2 3 4 5 6 7 8 9 ";
+				display: block;
+				word-break: break-all;
+				word-break: break-word;
+				transition: $speed cubic-bezier(0.75, 0.15, 0.6, 1.15), text-shadow 150ms;
+			}
+
+			&.blur {
+				opacity: 0.8;
+				text-shadow: 2px 1px 3px rgba(black, 0.2), 0 0.1em 2px rgba($textColor, 0.6),
+					0 0.3em 3px rgba($textColor, 0.3), 0 -0.1em 2px rgba($textColor, 0.6),
+					0 -0.3em 3px rgba($textColor, 0.3);
+			}
+			@for $i from 1 through 9 {
+				&[data-value="#{$i}"]::before {
+					margin-top: -$digitHeight * $i;
+				}
+			}
+		}
+		&:nth-last-child(3n):not(:first-child) {
+			&::before {
+				content: ",";
+				display: inline;
+				font-size: 1em;
+				opacity: 0.8;
+				color: #f8f8f8;
+			}
+		}
+	}
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Nixie+One&display=swap");
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: $baseColor;
+	font-family: "Nixie One", cursive;
+	perspective: 1000px;
+}
+
+.numCounter {
+	overflow: hidden;
+	padding: 0.4em;
+	text-align: center;
+
+	border-top: 1px solid rgba(white, 0.75);
+	border-left: 1px solid rgba(white, 0.75);
+	border-right: 1px solid rgba(white, 0.5);
+	border-bottom: 1px solid rgba(white, 0.5);
+	border-radius: 16px;
+	background: linear-gradient(
+		330deg,
+		scale-color($baseColor, $saturation: -5%),
+		scale-color($baseColor, $saturation: -10%)
+	);
+	box-shadow: -15px -15px 200px scale-color($baseColor, $lightness: 4%, $saturation:
+					5%),
+		15px 15px 200px scale-color($baseColor, $lightness: -2%, $saturation: -5%);
+
+	b {
+		background: scale-color($baseColor, $lightness: -10%, $saturation: -10%);
+
+		background: linear-gradient(
+			-30deg,
+			scale-color($baseColor, $lightness: 8%, $saturation: 5%),
+			scale-color($baseColor, $lightness: -20%, $saturation: -22%)
+		);
+
+		color: $textColor;
+	}
+}
